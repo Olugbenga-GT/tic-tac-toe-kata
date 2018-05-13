@@ -2,29 +2,27 @@ package it.eparlato.tictactoe;
 
 public class Game {
 
-	private String board = " ";
 	private Prompt prompt;
+	private Board board;
 
-	public Game(Prompt prompt) {
+	public Game(Prompt prompt, Board board) {
 		this.prompt = prompt;
-	}
-
-	public Game() {
-		this.prompt = new Prompt();
-	}
-
-	public String printBoard() {
-		return 
-			" 1\n" +
-			"A" + board + "\n";
-	}
-
-	public void takeField(String string) {
-		board = "X";
+		this.board = board;
 		
-		if (board.equals("X")) {
-			prompt.setStatus("GAME OVER: all fields have been taken");
-		}
+		board.print();
+	}
+
+	public void takeField(String field) {
+		
+		board.takeField(field); 
+		
+		prompt.printGameOverAllFieldsTaken();
+		
+		board.print();
+	}
+
+	public void printBoard() {
+		board.print();
 	}
 
 }

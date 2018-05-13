@@ -1,7 +1,12 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,33 +14,47 @@ public class GameWith1x1BoardTest {
 	
 	private Game game;
 	private Prompt prompt;
+	private ByteArrayOutputStream outputBaos;
+	private PrintStream printStream;
+	private Board board;
 
 	@Before
 	public void init() {
-		prompt = new Prompt();
-		game = new Game(prompt);
+		outputBaos = new ByteArrayOutputStream();
+		printStream = new PrintStream(outputBaos);
+		
+		prompt = new Prompt(printStream);
+		board = new Board(printStream);
+		
+		game = new Game(prompt, board);
+	}
+	
+	@After
+	public void shutdown() throws Exception {
+		printStream.close();
+		outputBaos.close();
 	}
 
 	@Test
 	public void a_new_empty_board_is_shown_when_the_game_starts() throws Exception {
 		
-		String emptyBoard = 
+		String outputFlow = 
 				" 1\n" +
 				"A \n";
 		
-		assertEquals(emptyBoard, game.printBoard());
+		assertTrue(gameOutput().contains(outputFlow));
 	}
-	
+
 	@Test
 	public void when_player_moves_a_cell_is_taken() throws Exception {
 		
 		game.takeField("A1");
 		
-		String expected = 
+		String outputFlow = 
 				" 1\n" +
 				"AX\n";
 		
-		assertEquals(expected, game.printBoard());
+		assertTrue(gameOutput().contains(outputFlow));
 	}
 	
 	@Test
@@ -43,6 +62,11 @@ public class GameWith1x1BoardTest {
 		
 		game.takeField("A1");
 		
-		assertEquals("GAME OVER: all fields have been taken", prompt.printStatus());
+		assertTrue(gameOutput().contains("GAME OVER: all fields have been taken"));
 	}
+	
+	private String gameOutput() throws UnsupportedEncodingException {
+		return outputBaos.toString("UTF-8");
+	}
+	
 }

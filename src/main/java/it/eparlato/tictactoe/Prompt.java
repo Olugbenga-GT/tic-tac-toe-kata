@@ -1,15 +1,17 @@
 package it.eparlato.tictactoe;
 
+import java.io.PrintStream;
+
 public class Prompt {
 
-	private String status = "";
+	private PrintStream output;
 	
-	public String printStatus() {
-		return status;
+	public Prompt(PrintStream output) {
+		this.output = output;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void printGameOverAllFieldsTaken() {
+		output.print("GAME OVER: all fields have been taken");
 	}
 
 }

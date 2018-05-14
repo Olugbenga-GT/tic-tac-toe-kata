@@ -39,8 +39,8 @@ public class GameWith1x1BoardTest {
 	public void a_new_empty_board_is_shown_when_the_game_starts() throws Exception {
 		
 		String outputFlow = 
-				" 1\n" +
-				"A \n";
+				"  A\n" +
+				"1  \n";
 		
 		assertTrue(gameOutput().contains(outputFlow));
 	}
@@ -51,8 +51,8 @@ public class GameWith1x1BoardTest {
 		game.takeField("A1");
 		
 		String outputFlow = 
-				" 1\n" +
-				"AX\n";
+				"  A\n" +
+				"1 X\n";
 		
 		assertTrue(gameOutput().contains(outputFlow));
 	}

@@ -20,8 +20,8 @@ public class Board {
 	}
 
 	public void print() {
-		output.println(" 1\n" +
-				"A" + content + "\n");
+		output.print("  A\n");
+		output.print("1 " + content + "\n");
 	}
 
 }

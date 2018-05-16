@@ -7,7 +7,6 @@ import java.io.PrintStream;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class BoardTest {
@@ -50,9 +49,7 @@ public class BoardTest {
 				"  A B C\n" +
 				"1  | | \n" +
 				"2  | | \n"	+	
-				"3  | | \n"
-				;
-		
+				"3  | | \n";
 		
 		board.print();
 		

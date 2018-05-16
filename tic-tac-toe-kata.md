@@ -17,6 +17,8 @@ In random order
 
 * [OK] simplest case: 1x1 board, only player X. Player X moves, the game ends.
 
+* only a command in form "A1" is valid 
+
 * I/O with stdin and stdout
 
 * board 3x3

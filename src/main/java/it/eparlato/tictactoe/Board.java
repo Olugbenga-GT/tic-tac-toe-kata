@@ -4,9 +4,8 @@ import java.io.PrintStream;
 
 public class Board {
 
-	private String[][] content = new String[][] {
-			{" "}
-	};
+	private static final String EMPTY_CELL = " ";
+	private String[][] content;
 	private PrintStream output;
 	private int tot_rows;
 	private int tot_columns;
@@ -20,11 +19,15 @@ public class Board {
 		this.tot_rows = tot_rows;
 		this.tot_columns = tot_columns;
 		
+		build();
+	}
+
+	private void build() {
 		content = new String[tot_rows][tot_columns];
 		
-		for (int i=0; i<tot_rows; i++) {
-			for (int j=0; j<tot_columns; j++) {
-				content[i][j] = " ";
+		for (int i = 0; i < tot_rows; i++) {
+			for (int j = 0; j < tot_columns; j++) {
+				content[i][j] = EMPTY_CELL;
 			}
 		}
 	}
@@ -35,36 +38,43 @@ public class Board {
 
 	public void print() {
 		
-		// TODO: please refactor me
 		
-		String header = "";
-		
-		if(content[0].length == 1) {
-			header = "  A\n";
-		}
-		if (content[0].length == 3) {
-			header = "  A B C\n";
-		}
+		String header = buildHeader();
+		String body = buildBody();
 		
 		output.print(header);
+		output.print(body);
+	}
+
+	private String buildBody() {
+		StringBuilder body = new StringBuilder();
 		
-		StringBuilder row;
-		for (int i=0; i<tot_rows; i++) {
-			row = new StringBuilder();
+		for (int i = 0; i < tot_rows; i++) {
+			body.append(i + 1).append(EMPTY_CELL);
 			
-			row.append(i+1).append(" ");
-			
-			for(int j=0; j<tot_columns; j++) {
-				row.append(content[i][j]);
+			for (int j = 0; j < tot_columns; j++) {
+				body.append(content[i][j]);
 				
 				if(j < tot_columns - 1) {
-					row.append("|");
+					body.append("|");
 				}
 			}
-			row.append("\n");
 			
-			output.print(row.toString());
+			body.append("\n");
 		}
+		
+		return body.toString();
+	}
+
+	private String buildHeader() {
+		StringBuilder header = new StringBuilder(" ");
+
+		for (int i = 0; i < content[0].length; i++) {
+			header.append(" ").append((char)('A' + i));
+		}
+		
+		header.append("\n");
+		return header.toString();
 	}
 
 }

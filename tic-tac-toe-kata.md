@@ -17,10 +17,12 @@ In random order
 
 * [OK] simplest case: 1x1 board, only player X. Player X moves, the game ends.
 
-* only a command in form "A1" is valid 
+* [OK] only a command in form "A1" is valid
+
+* [OK] no controls on valid command basing on board dimensions. This is a just a kata.
 
 * I/O with stdin and stdout
 
-* board 3x3
+* [OK] board 3x3
 
 * prompt status: when the game begins, when the game is over...

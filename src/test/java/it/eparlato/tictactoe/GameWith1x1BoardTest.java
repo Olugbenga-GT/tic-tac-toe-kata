@@ -1,6 +1,6 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

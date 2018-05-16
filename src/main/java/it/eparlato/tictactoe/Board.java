@@ -1,6 +1,8 @@
 package it.eparlato.tictactoe;
 
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Board {
 
@@ -9,6 +11,7 @@ public class Board {
 	private PrintStream output;
 	private int tot_rows;
 	private int tot_columns;
+	Map<String, Integer> rowsCoordinates;
 
 	public Board(PrintStream output) {
 		this(output, 1, 1);
@@ -30,14 +33,33 @@ public class Board {
 				content[i][j] = EMPTY_CELL;
 			}
 		}
+		
+		rowsCoordinates = new HashMap<String, Integer>();
+		rowsCoordinates.put("A", 0);
+		rowsCoordinates.put("B", 1);
+		rowsCoordinates.put("C", 2);
 	}
 
 	public void takeField(String field) {
-		content[0][0] = "X";
+		if (!field.toUpperCase().matches("[A-C][1-3]")) {
+			return;
+		}
+		
+		int rowIndex = getRowIndexFromFieldCoordinates(field);
+		int columnIndex = getColumnIndexFromFieldCoordinates(field);
+		
+		content[rowIndex][columnIndex] = "X";
+	}
+
+	private int getColumnIndexFromFieldCoordinates(String field) {
+		return Integer.parseInt(field.substring(1)) - 1;
+	}
+
+	private Integer getRowIndexFromFieldCoordinates(String field) {
+		return rowsCoordinates.get(field.substring(0, 1));
 	}
 
 	public void print() {
-		
 		
 		String header = buildHeader();
 		String body = buildBody();
@@ -50,12 +72,15 @@ public class Board {
 		StringBuilder body = new StringBuilder();
 		
 		for (int i = 0; i < tot_rows; i++) {
+			
+			// Line number
 			body.append(i + 1).append(EMPTY_CELL);
 			
 			for (int j = 0; j < tot_columns; j++) {
 				body.append(content[i][j]);
 				
 				if(j < tot_columns - 1) {
+					// Columns separator
 					body.append("|");
 				}
 			}

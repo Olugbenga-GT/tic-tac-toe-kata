@@ -23,6 +23,8 @@ In random order
 
 * I/O with stdin and stdout
 
+* application end-to-end tests
+
 * [OK] board 3x3
 
 * prompt status: when the game begins, when the game is over...

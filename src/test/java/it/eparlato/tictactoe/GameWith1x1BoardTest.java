@@ -1,9 +1,11 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
@@ -63,6 +65,21 @@ public class GameWith1x1BoardTest {
 		game.takeField("A1");
 		
 		assertTrue(gameOutput().contains("GAME OVER: all fields have been taken"));
+	}
+	
+	@Test
+	public void game_accepts_input_from_a_inputstream() throws Exception {
+		String command = "A1\n";
+		Reader inputStream = new StringReader(command);
+		game = new Game(prompt, board, inputStream);
+		
+		String expected = 
+				"  A\n" +
+				"1 X\n";
+		
+		game.takeField("");
+		
+		assertTrue(gameOutput().contains(expected));
 	}
 	
 	private String gameOutput() throws UnsupportedEncodingException {

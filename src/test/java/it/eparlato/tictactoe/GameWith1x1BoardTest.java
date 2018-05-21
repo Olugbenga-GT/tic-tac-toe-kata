@@ -13,7 +13,6 @@ import org.junit.Test;
 public class GameWith1x1BoardTest {
 	
 	private Game game;
-	private Prompt prompt;
 	private ByteArrayOutputStream outputBaos;
 	private PrintStream printStream;
 	private Board board;
@@ -23,10 +22,9 @@ public class GameWith1x1BoardTest {
 		outputBaos = new ByteArrayOutputStream();
 		printStream = new PrintStream(outputBaos);
 		
-		prompt = new Prompt(printStream);
 		board = new Board(printStream, 1, 1);
 		
-		game = new Game(prompt, board);
+		game = new Game(board);
 	}
 	
 	@After
@@ -55,14 +53,6 @@ public class GameWith1x1BoardTest {
 				"1 X\n";
 		
 		assertTrue(gameOutput().contains(outputFlow));
-	}
-	
-	@Test
-	public void when_the_board_is_full_the_game_is_over() throws Exception {
-		
-		game.takeField("A1");
-		
-		assertTrue(gameOutput().contains("GAME OVER: all fields have been taken"));
 	}
 	
 	private String gameOutput() throws UnsupportedEncodingException {

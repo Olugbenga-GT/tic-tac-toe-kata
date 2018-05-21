@@ -13,9 +13,8 @@ public class TicTacToeApp {
 	public TicTacToeApp(Reader inputStream, PrintStream printStream) {
 		this.reader = new BufferedReader(inputStream);
 		
-		Prompt prompt = new Prompt(printStream);
 		Board board = new Board(printStream, 3, 3);
-		this.game = new Game(prompt, board);
+		this.game = new Game(board);
 	}
 
 	public void run() throws IOException {

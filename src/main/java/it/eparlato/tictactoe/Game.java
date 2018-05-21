@@ -4,11 +4,9 @@ import java.io.IOException;
 
 public class Game {
 
-	private Prompt prompt;
 	private Board board;
 
-	public Game(Prompt prompt, Board board) {
-		this.prompt = prompt;
+	public Game(Board board) {
 		this.board = board;
 		
 		board.print();
@@ -17,8 +15,6 @@ public class Game {
 	public void takeField(String field) throws IOException {
 		
 		board.takeField(field); 
-		
-		prompt.printGameOverAllFieldsTaken();
 		
 		board.print();
 		

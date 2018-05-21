@@ -29,7 +29,7 @@ public class BoardTest {
 	
 	@Test
 	public void empty_1x1_board() throws Exception {
-		board = new Board(printStream);
+		board = new Board(printStream, 1, 1);
 		
 		String expected = 
 				"  A\n" +
@@ -57,7 +57,7 @@ public class BoardTest {
 	
 	@Test
 	public void a_command_without_a_letter_or_a_number_is_not_valid() throws Exception {
-		board = new Board(printStream);
+		board = new Board(printStream, 1, 1);
 		
 		board.takeField("A");
 		board.takeField("1");
@@ -90,5 +90,22 @@ public class BoardTest {
 		board.print();
 		
 		assertEquals(expected, outputBaos.toString("UTF-8"));
+	}
+	
+	@Test
+	public void a_board_knows_when_all_fields_have_been_taken() throws Exception {
+		board = new Board(printStream, 3, 3);
+		
+		board.takeField("A1");
+		board.takeField("A2");
+		board.takeField("A3");
+		board.takeField("B1");
+		board.takeField("B2");
+		board.takeField("B3");
+		board.takeField("C1");
+		board.takeField("C2");
+		board.takeField("C3");
+		
+		assertTrue(board.haveAllFieldsBeenTaken());
 	}
 }

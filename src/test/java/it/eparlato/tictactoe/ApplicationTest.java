@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ApplicationTest {
@@ -31,9 +32,6 @@ public class ApplicationTest {
 	
 	@Test
 	public void application_accepts_input_from_a_inputstream() throws Exception {
-
-		
-		
 		String command = "A1\n";
 		Reader inputStream = new StringReader(command);
 		
@@ -42,8 +40,31 @@ public class ApplicationTest {
 		application.run();
 		
 		String expected = 
-				"  A\n" +
-				"1 X\n";
+				"  A B C\n" +
+				"1 X| | \n" +
+				"2  | | \n" +
+				"3  | | \n"
+						;
+		
+		assertTrue(gameOutput().contains(expected));
+	}
+
+	@Test
+	@Ignore
+	public void when_player_X_has_moved_it_is_player_O_turn() throws Exception {
+		String command = "A1\nB1\n";
+		Reader inputStream = new StringReader(command);
+		
+		TicTacToeApp application = new TicTacToeApp(inputStream, printStream);
+		
+		application.run();
+		
+		String expected = 
+				"  A B C\n" +
+				"1 X|O| \n" +
+				"2  | | \n" +
+				"3  | | \n"
+						;
 		
 		assertTrue(gameOutput().contains(expected));
 	}

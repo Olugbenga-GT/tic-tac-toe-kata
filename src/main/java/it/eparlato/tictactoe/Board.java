@@ -14,7 +14,7 @@ public class Board {
 	Map<String, Integer> rowsCoordinates;
 
 	public Board(PrintStream output) {
-		this(output, 1, 1);
+		this(output, 3, 3);
 	}
 
 	public Board(PrintStream output, int tot_rows, int tot_columns) {
@@ -100,6 +100,19 @@ public class Board {
 		
 		header.append("\n");
 		return header.toString();
+	}
+
+	public boolean haveAllFieldsBeenTaken() {
+		for (int i = 0; i < tot_rows; i++) {
+			for (int j = 0; j < tot_columns; j++) {
+				
+				if (content[i][j] == EMPTY_CELL) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 
 }

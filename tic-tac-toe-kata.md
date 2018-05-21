@@ -23,8 +23,12 @@ In random order
 
 * [OK] I/O with stdin and stdout
 
-* application end-to-end tests
-
 * [OK] board 3x3
 
+* when a player has taken a field, it's the other player's turn 
+
+* on a 3x3 grid a game is over if all the fields are taken
+
 * prompt status: when the game begins, when the game is over...
+
+* application end-to-end tests

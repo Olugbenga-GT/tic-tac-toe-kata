@@ -21,6 +21,7 @@ public class Game {
 		prompt.printGameOverAllFieldsTaken();
 		
 		board.print();
+		
 	}
 
 	public void printBoard() {

@@ -1,11 +1,9 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.io.Reader;
-import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
@@ -26,7 +24,7 @@ public class GameWith1x1BoardTest {
 		printStream = new PrintStream(outputBaos);
 		
 		prompt = new Prompt(printStream);
-		board = new Board(printStream);
+		board = new Board(printStream, 1, 1);
 		
 		game = new Game(prompt, board);
 	}
@@ -65,22 +63,6 @@ public class GameWith1x1BoardTest {
 		game.takeField("A1");
 		
 		assertTrue(gameOutput().contains("GAME OVER: all fields have been taken"));
-	}
-	
-	@Test
-	public void application_accepts_input_from_a_inputstream() throws Exception {
-		String command = "A1\n";
-		Reader inputStream = new StringReader(command);
-		
-		TicTacToeApp application = new TicTacToeApp(inputStream, printStream);
-		
-		application.run();
-		
-		String expected = 
-				"  A\n" +
-				"1 X\n";
-		
-		assertTrue(gameOutput().contains(expected));
 	}
 	
 	private String gameOutput() throws UnsupportedEncodingException {

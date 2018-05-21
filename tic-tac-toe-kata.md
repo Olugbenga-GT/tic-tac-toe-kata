@@ -21,7 +21,7 @@ In random order
 
 * [OK] no controls on valid command basing on board dimensions. This is a just a kata.
 
-* I/O with stdin and stdout
+* [OK] I/O with stdin and stdout
 
 * application end-to-end tests
 

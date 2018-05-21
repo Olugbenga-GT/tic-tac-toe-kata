@@ -1,6 +1,6 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -68,16 +68,17 @@ public class GameWith1x1BoardTest {
 	}
 	
 	@Test
-	public void game_accepts_input_from_a_inputstream() throws Exception {
+	public void application_accepts_input_from_a_inputstream() throws Exception {
 		String command = "A1\n";
 		Reader inputStream = new StringReader(command);
-		game = new Game(prompt, board, inputStream);
+		
+		TicTacToeApp application = new TicTacToeApp(inputStream, printStream);
+		
+		application.run();
 		
 		String expected = 
 				"  A\n" +
 				"1 X\n";
-		
-		game.takeField("");
 		
 		assertTrue(gameOutput().contains(expected));
 	}

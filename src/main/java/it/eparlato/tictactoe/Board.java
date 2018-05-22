@@ -131,7 +131,12 @@ public class Board {
 		int totConsecutivePlayerFields;
 		
 		for (int i = 0; i < tot_rows; i++) {
-			currentPlayer = content[i][0];
+			if (content[i][0].equals(EMPTY_CELL)) {
+				continue;
+			}
+			
+			currentPlayer = content[i][0];			
+			
 			totConsecutivePlayerFields = 1;
 			
 			for (int j = 1; j < tot_columns; j++) {

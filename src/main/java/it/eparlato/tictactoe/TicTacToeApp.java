@@ -20,7 +20,9 @@ public class TicTacToeApp {
 
 	public void run() throws IOException {
 		
-		while (true) {
+		boolean endGame = false;
+		
+		while (!endGame) {
 			String field = reader.readLine();
 			
 			if (field == null) {
@@ -29,9 +31,7 @@ public class TicTacToeApp {
 			
 			game.takeField(field);
 			
-			if (board.haveAllFieldsBeenTaken()) {
-				break;
-			}
+			endGame = game.isGameOver();
 		}
 		
 		

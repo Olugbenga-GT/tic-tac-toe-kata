@@ -25,7 +25,7 @@ In random order
 
 * [OK] board 3x3
 
-* when a player has taken a field, it's the other player's turn 
+* [OK] when a player has taken a field, it's the other player's turn 
 
 * on a 3x3 grid a game is over if all the fields are taken
 

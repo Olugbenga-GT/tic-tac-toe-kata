@@ -22,6 +22,14 @@ public class Game {
 		board.print();
 		
 	}
+	
+	public boolean isGameOver() {
+		if (board.haveAllFieldsBeenTaken()) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	private void changePlayer() {
 		if ("X".equals(player)) {

@@ -49,6 +49,17 @@ public class GameWith3x3BoardTest {
 		assertTrue(gameOutput().contains(expected));
 	}
 	
+	@Test
+	public void a_game_is_over_when_all_fields_in_a_row_are_taken_by_a_player() throws Exception {
+		game.takeField("A2");
+		game.takeField("B1");
+		game.takeField("B2");
+		game.takeField("A1");
+		game.takeField("C2");
+		
+		assertTrue(game.isGameOver());
+	}
+	
 	private String gameOutput() throws UnsupportedEncodingException {
 		return outputBaos.toString("UTF-8");
 	}

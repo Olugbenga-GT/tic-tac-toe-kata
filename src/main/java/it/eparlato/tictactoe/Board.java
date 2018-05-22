@@ -117,13 +117,36 @@ public class Board {
 		for (int i = 0; i < tot_rows; i++) {
 			for (int j = 0; j < tot_columns; j++) {
 				
-				if (content[i][j] == EMPTY_CELL) {
+				if (content[i][j].equals(EMPTY_CELL)) {
 					return false;
 				}
 			}
 		}
 		
 		return true;
+	}
+
+	public boolean aRowHasBeenTakenByAPlayer() {
+		String currentPlayer;
+		int totConsecutivePlayerFields;
+		
+		for (int i = 0; i < tot_rows; i++) {
+			currentPlayer = content[i][0];
+			totConsecutivePlayerFields = 1;
+			
+			for (int j = 1; j < tot_columns; j++) {
+				if (!content[i][j].equals(currentPlayer)) {
+					break;
+				}
+				
+				++totConsecutivePlayerFields;
+			}
+			
+			if (totConsecutivePlayerFields == 3)
+				return true;
+		}
+		
+		return false;
 	}
 
 }

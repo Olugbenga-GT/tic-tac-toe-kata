@@ -27,6 +27,12 @@ In random order
 
 * [OK] when a player has taken a field, it's the other player's turn 
 
+* a game is over when all fields in a column are taken by a player
+
+* [OK] a game is over when all fields in a row are taken by a player
+
+* a game is over when all fields in a diagonal are taken by a player
+
 * on a 3x3 grid a game is over if all the fields are taken
 
 * prompt status: when the game begins, when the game is over...

@@ -28,6 +28,10 @@ public class Game {
 			return true;
 		}
 		
+		if(board.aRowHasBeenTakenByAPlayer()) {
+			return true;
+		}
+		
 		return false;
 	}
 

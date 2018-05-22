@@ -11,7 +11,7 @@ public class Board {
 	private PrintStream output;
 	private int tot_rows;
 	private int tot_columns;
-	Map<String, Integer> rowsCoordinates;
+	Map<String, Integer> columnsCoordinates;
 
 	public Board(PrintStream output) {
 		this(output, 3, 3);
@@ -34,10 +34,21 @@ public class Board {
 			}
 		}
 		
-		rowsCoordinates = new HashMap<String, Integer>();
-		rowsCoordinates.put("A", 0);
-		rowsCoordinates.put("B", 1);
-		rowsCoordinates.put("C", 2);
+		columnsCoordinates = new HashMap<String, Integer>();
+		columnsCoordinates.put("A", 0);
+		columnsCoordinates.put("B", 1);
+		columnsCoordinates.put("C", 2);
+	}
+	
+	public void takeField(String field, String player) {
+		if (!field.toUpperCase().matches("[A-C][1-3]")) {
+			return;
+		}
+		
+		int rowIndex = getRowIndexFromFieldCoordinates(field);
+		int columnIndex = getColumnIndexFromFieldCoordinates(field);
+		
+		content[rowIndex][columnIndex] = player;
 	}
 
 	public void takeField(String field) {
@@ -52,11 +63,11 @@ public class Board {
 	}
 
 	private int getColumnIndexFromFieldCoordinates(String field) {
-		return Integer.parseInt(field.substring(1)) - 1;
+		return columnsCoordinates.get(field.substring(0, 1));
 	}
 
 	private Integer getRowIndexFromFieldCoordinates(String field) {
-		return rowsCoordinates.get(field.substring(0, 1));
+		return Integer.parseInt(field.substring(1)) - 1;
 	}
 
 	public void print() {

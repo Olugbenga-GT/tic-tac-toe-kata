@@ -9,19 +9,32 @@ public class TicTacToeApp {
 
 	private Game game;
 	private BufferedReader reader;
-
+	private Board board;
+	
 	public TicTacToeApp(Reader inputStream, PrintStream printStream) {
 		this.reader = new BufferedReader(inputStream);
 		
-		Board board = new Board(printStream, 3, 3);
+		this.board = new Board(printStream, 3, 3);
 		this.game = new Game(board);
 	}
 
 	public void run() throws IOException {
 		
-		String field = reader.readLine();
+		while (true) {
+			String field = reader.readLine();
+			
+			if (field == null) {
+				break;
+			}
+			
+			game.takeField(field);
+			
+			if (board.haveAllFieldsBeenTaken()) {
+				break;
+			}
+		}
 		
-		game.takeField(field);
+		
 	}
 
 }

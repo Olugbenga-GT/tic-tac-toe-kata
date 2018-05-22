@@ -5,6 +5,7 @@ import java.io.IOException;
 public class Game {
 
 	private Board board;
+	private String player = "X";
 
 	public Game(Board board) {
 		this.board = board;
@@ -14,10 +15,20 @@ public class Game {
 
 	public void takeField(String field) throws IOException {
 		
-		board.takeField(field); 
+		board.takeField(field, player); 
+		
+		changePlayer();
 		
 		board.print();
 		
+	}
+
+	private void changePlayer() {
+		if ("X".equals(player)) {
+			player = "O";
+		} else {
+			player = "X";
+		}
 	}
 
 	public void printBoard() {

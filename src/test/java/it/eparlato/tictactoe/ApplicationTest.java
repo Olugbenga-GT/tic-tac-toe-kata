@@ -11,7 +11,6 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class ApplicationTest {
@@ -50,7 +49,6 @@ public class ApplicationTest {
 	}
 
 	@Test
-	@Ignore
 	public void when_player_X_has_moved_it_is_player_O_turn() throws Exception {
 		String command = "A1\nB1\n";
 		Reader inputStream = new StringReader(command);

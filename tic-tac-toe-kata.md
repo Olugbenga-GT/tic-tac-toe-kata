@@ -27,7 +27,7 @@ In random order
 
 * [OK] when a player has taken a field, it's the other player's turn 
 
-* a game is over when all fields in a column are taken by a player
+* [OK] a game is over when all fields in a column are taken by a player
 
 * [OK] a game is over when all fields in a row are taken by a player
 

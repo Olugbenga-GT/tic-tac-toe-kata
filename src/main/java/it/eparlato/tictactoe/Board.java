@@ -127,58 +127,57 @@ public class Board {
 	}
 
 	public boolean aRowHasBeenTakenByAPlayer() {
-		String currentPlayer;
-		int totConsecutivePlayerFields;
-		
 		for (int i = 0; i < tot_rows; i++) {
-			if (content[i][0].equals(EMPTY_CELL)) {
-				continue;
-			}
-			
-			currentPlayer = content[i][0];			
-			
-			totConsecutivePlayerFields = 1;
-			
-			for (int j = 1; j < tot_columns; j++) {
-				if (!content[i][j].equals(currentPlayer)) {
-					break;
-				}
-				
-				++totConsecutivePlayerFields;
-			}
-			
-			if (totConsecutivePlayerFields == 3)
+			if (allFieldsAreTakenByAPlayerOnRow(i)) {
 				return true;
+			}
 		}
 		
 		return false;
 	}
-
+	
 	public boolean aColumnHasBeenTakenByAPlayer() {
-		String currentPlayer;
-		int totConsecutivePlayerFields;
 		
 		for (int j = 0; j < tot_columns; j++) {
-			if (content[0][j].equals(EMPTY_CELL)) {
-				continue;
-			}
-			
-			currentPlayer = content[0][j];			
-			totConsecutivePlayerFields = 1;
-			
-			for (int i = 1; i < tot_rows; i++) {
-				if (!content[i][j].equals(currentPlayer)) {
-					break;
-				}
-				
-				++totConsecutivePlayerFields;
-			}
-			
-			if (totConsecutivePlayerFields == 3)
+			if (allFieldsAreTakenByAPlayerOnColumn(j)) {
 				return true;
+			}
 		}
 		
 		return false;
 	}
-
+	
+	private boolean allFieldsAreTakenByAPlayerOnRow(int rowIndex) {
+		
+		if (content[rowIndex][0].equals(EMPTY_CELL)) {
+			return false;
+		}
+		
+		String player = content[rowIndex][0];
+		
+		for (int j = 1; j < tot_columns; j++) {
+			if (!content[rowIndex][j].equals(player)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	private boolean allFieldsAreTakenByAPlayerOnColumn(int columnIndex) {
+		
+		if (content[0][columnIndex].equals(EMPTY_CELL)) {
+			return false;
+		}
+		
+		String player = content[0][columnIndex];
+		
+		for (int i = 1; i < tot_rows; i++) {
+			if (!content[i][columnIndex].equals(player)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 }

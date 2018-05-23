@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class GameWith3x3BoardTest {
@@ -73,6 +72,7 @@ public class GameWith3x3BoardTest {
 		
 		assertTrue(game.isGameOver());
 	}
+	
 	
 	private String gameOutput() throws UnsupportedEncodingException {
 		return outputBaos.toString("UTF-8");

@@ -50,6 +50,14 @@ public class Game {
 			return true;
 		}
 		
+		if (board.upperLeftBottomRightDiagonalIsTakenByAPlayer()) {
+			return true;
+		}
+		
+		if (board.upperRightBottomLeftDiagonalIsTakenByAPlayer()) {
+			return true;
+		}
+		
 		return false;
 	}
 

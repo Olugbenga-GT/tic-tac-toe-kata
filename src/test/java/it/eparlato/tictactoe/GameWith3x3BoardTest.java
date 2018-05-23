@@ -1,6 +1,6 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -73,6 +73,28 @@ public class GameWith3x3BoardTest {
 		assertTrue(game.isGameOver());
 	}
 	
+
+	@Test
+	public void a_game_is_over_when_all_fields_in_diagonal_upper_left_bottom_right_are_taken_by_a_player() throws Exception {
+		commands = "A1\nB1\nB2\nC1\nC3\n";
+		
+		inputStream = new StringReader(commands);
+		
+		game.run(inputStream);
+		
+		assertTrue(game.isGameOver());
+	}
+	
+	@Test
+	public void a_game_is_over_when_all_fields_in_diagonal_upper_right_bottom_left_are_taken_by_a_player() throws Exception {
+		commands = "A1\nB2\nA2\nC1\nC3\nA3\n";
+		
+		inputStream = new StringReader(commands);
+		
+		game.run(inputStream);
+		
+		assertTrue(game.isGameOver());
+	}
 	
 	private String gameOutput() throws UnsupportedEncodingException {
 		return outputBaos.toString("UTF-8");

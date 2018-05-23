@@ -180,4 +180,37 @@ public class Board {
 		
 		return true;
 	}
+
+	public boolean upperLeftBottomRightDiagonalIsTakenByAPlayer() {
+		if (content[0][0].equals(EMPTY_CELL)) {
+			return false;
+		}
+		
+		String player = content[0][0];
+		
+		for (int i = 1, j = 1; i < tot_rows && j < tot_columns; i++, j++) {
+			
+			if (!content[i][j].equals(player)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+
+	public boolean upperRightBottomLeftDiagonalIsTakenByAPlayer() {
+		if (content[0][tot_columns - 1].equals(EMPTY_CELL)) {
+			return false;
+		}
+		
+		String player = content[0][2];
+		
+		for (int i = 1, j = 1; i < tot_rows && j >= 0; i++, j--) {
+			if (!content[i][j].equals(player)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

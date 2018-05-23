@@ -154,4 +154,31 @@ public class Board {
 		return false;
 	}
 
+	public boolean aColumnHasBeenTakenByAPlayer() {
+		String currentPlayer;
+		int totConsecutivePlayerFields;
+		
+		for (int j = 0; j < tot_columns; j++) {
+			if (content[0][j].equals(EMPTY_CELL)) {
+				continue;
+			}
+			
+			currentPlayer = content[0][j];			
+			totConsecutivePlayerFields = 1;
+			
+			for (int i = 1; i < tot_rows; i++) {
+				if (!content[i][j].equals(currentPlayer)) {
+					break;
+				}
+				
+				++totConsecutivePlayerFields;
+			}
+			
+			if (totConsecutivePlayerFields == 3)
+				return true;
+		}
+		
+		return false;
+	}
+
 }

@@ -1,6 +1,8 @@
 package it.eparlato.tictactoe;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
 
 public class Game {
 
@@ -12,15 +14,27 @@ public class Game {
 		
 		board.print();
 	}
-
-	public void takeField(String field) throws IOException {
+	
+	public void run(Reader inputStream) throws IOException {
+		String command;
+		BufferedReader commandReader = new BufferedReader(inputStream);
 		
-		board.takeField(field, player); 
+		while (!isGameOver()) {
 		
-		changePlayer();
+			command = commandReader.readLine();
+			
+			if (command == null) {
+				break;
+			}
+			
+			board.takeField(command, player); 
+			
+			changePlayer();
+			
+			board.print();
+		}
 		
-		board.print();
-		
+		commandReader.close();
 	}
 	
 	public boolean isGameOver() {
@@ -28,7 +42,11 @@ public class Game {
 			return true;
 		}
 		
-		if(board.aRowHasBeenTakenByAPlayer()) {
+		if (board.aRowHasBeenTakenByAPlayer()) {
+			return true;
+		}
+		
+		if (board.aColumnHasBeenTakenByAPlayer()) {
 			return true;
 		}
 		

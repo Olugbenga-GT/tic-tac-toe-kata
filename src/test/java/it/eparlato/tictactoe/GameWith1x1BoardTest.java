@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
@@ -45,8 +46,10 @@ public class GameWith1x1BoardTest {
 
 	@Test
 	public void when_player_moves_a_cell_is_taken() throws Exception {
+		String command = "A1\n";
+		StringReader inputStream = new StringReader(command);
 		
-		game.takeField("A1");
+		game.run(inputStream);
 		
 		String outputFlow = 
 				"  A\n" +

@@ -2,6 +2,7 @@ package it.eparlato.tictactoe;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
 
@@ -20,6 +21,12 @@ public class TicTacToeApp {
 
 	public void run() throws IOException {
 		game.run(reader);
+	}
+	
+	public static void main(String[] args) throws IOException {
+		Game game = new Game(new Board(System.out));
+		
+		game.run(new InputStreamReader(System.in));
 	}
 
 }

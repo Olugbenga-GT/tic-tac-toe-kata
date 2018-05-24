@@ -19,7 +19,7 @@ public class Game {
 		String command;
 		BufferedReader commandReader = new BufferedReader(inputStream);
 		
-		while (!isGameOver()) {
+		while (!isOver()) {
 		
 			command = commandReader.readLine();
 			
@@ -37,7 +37,7 @@ public class Game {
 		commandReader.close();
 	}
 	
-	public boolean isGameOver() {
+	public boolean isOver() {
 		if (board.haveAllFieldsBeenTaken()) {
 			return true;
 		}

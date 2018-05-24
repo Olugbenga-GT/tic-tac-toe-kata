@@ -60,7 +60,7 @@ public class GameWith3x3BoardTest {
 		
 		game.run(inputStream);
 		
-		assertTrue(game.isGameOver());
+		assertTrue(game.isOver());
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class GameWith3x3BoardTest {
 		
 		game.run(inputStream);
 		
-		assertTrue(game.isGameOver());
+		assertTrue(game.isOver());
 	}
 	
 
@@ -82,7 +82,7 @@ public class GameWith3x3BoardTest {
 		
 		game.run(inputStream);
 		
-		assertTrue(game.isGameOver());
+		assertTrue(game.isOver());
 	}
 	
 	@Test
@@ -93,7 +93,17 @@ public class GameWith3x3BoardTest {
 		
 		game.run(inputStream);
 		
-		assertTrue(game.isGameOver());
+		assertTrue(game.isOver());
+	}
+	
+	@Test
+	public void a_game_is_over_when_all_fields_have_been_taken() throws Exception {
+		commands = "A1\nB2\nA3\nC1\nC2\nA2\nB1\nB3\nC3\n";
+		inputStream = new StringReader(commands);
+		
+		game.run(inputStream);
+		
+		assertTrue(game.isOver());
 	}
 	
 	private String gameOutput() throws UnsupportedEncodingException {

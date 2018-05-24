@@ -33,8 +33,16 @@ In random order
 
 * [OK] a game is over when all fields in a diagonal are taken by a player
 
-* on a 3x3 grid a game is over if all the fields are taken
+* [OK] on a 3x3 grid a game is over if all the fields are taken
 
-* prompt status: when the game begins, when the game is over...
+* the app should accept lower case letters: a1 should be valid.
+
+* deal not valid commands: start ignoring them, then print a message on a prompt
+
+* prompt: print when the game begins, when the game is over, when the command is invalid...
 
 * application end-to-end tests
+
+* apply state design pattern in main loop?
+
+* apply object calisthenics rules?

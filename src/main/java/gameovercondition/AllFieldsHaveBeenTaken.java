@@ -9,11 +9,11 @@ public class AllFieldsHaveBeenTaken extends GameOverCondition {
 	}
 
 	@Override
-	public boolean isGameOver() {
-		for (int i = 0; i < tot_rows; i++) {
-			for (int j = 0; j < tot_columns; j++) {
+	public boolean isTrue() {
+		for (int rowIndex = 0; rowIndex < totRows; rowIndex++) {
+			for (int columnIndex = 0; columnIndex < totColumns; columnIndex++) {
 
-				if (content[i][j].equals(EMPTY_CELL)) {
+				if (isEmptyCell(rowIndex, columnIndex)) {
 					return false;
 				}
 			}

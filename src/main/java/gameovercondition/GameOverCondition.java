@@ -4,18 +4,24 @@ import it.eparlato.tictactoe.Board;
 
 public abstract class GameOverCondition {
 	
-	protected String[][] content;
-	protected int tot_rows;
-	protected int tot_columns;
+	protected int totRows;
+	protected int totColumns;
 	
-	// TODO: replace this with a isCellEmpty(row, column) on Board
-	protected final String EMPTY_CELL = " ";
+	private Board board;
 	
 	public GameOverCondition(Board board) {
-		this.content = board.getContent();
-		this.tot_rows = content.length;
-		this.tot_columns = content[0].length;
+		this.board = board;
+		this.totRows = board.getTotRows();
+		this.totColumns = board.getTotColumns();
 	}
 	
-	public abstract boolean isGameOver();
+	protected boolean isEmptyCell(int rowIndex, int columnIndex) {
+		return board.isEmptyField(rowIndex, columnIndex);
+	}
+	
+	protected String getPlayerAtField(int rowIndex, int columnIndex) {
+		return board.getPlayerAtField(rowIndex, columnIndex);
+	}
+	
+	public abstract boolean isTrue();
 }

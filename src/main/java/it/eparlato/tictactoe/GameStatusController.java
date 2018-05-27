@@ -5,6 +5,10 @@ import java.util.List;
 
 import gameovercondition.AllFieldsHaveBeenTaken;
 import gameovercondition.GameOverCondition;
+import gameovercondition.HasAColumnBeenTakenByAPlayer;
+import gameovercondition.HasARowBeenTakenByPlayer;
+import gameovercondition.UpperLeftBottomRightDiagonalIsTakenByAPlayer;
+import gameovercondition.UpperRightBottomLeftDiagonalIsTakenByAPlayer;
 
 public class GameStatusController {
 
@@ -19,7 +23,7 @@ public class GameStatusController {
 		gameOverConditions.add(new UpperRightBottomLeftDiagonalIsTakenByAPlayer(board));
 		
 		for (GameOverCondition condition : gameOverConditions) {
-			if (condition.isGameOver()) {
+			if (condition.isTrue()) {
 				return true;
 			}
 		}

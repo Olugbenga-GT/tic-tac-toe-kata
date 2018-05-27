@@ -9,27 +9,38 @@ public class Board {
 	private static final String EMPTY_CELL = " ";
 	private String[][] content;
 	private PrintStream output;
-	private int tot_rows;
-	private int tot_columns;
+	private int totRows;
+	private int totColumns;
+
+	
+	public int getTotRows() {
+		return totRows;
+	}
+	
+	public int getTotColumns() {
+		return totColumns;
+	}
+
+
 	Map<String, Integer> columnsCoordinates;
 
 	public Board(PrintStream output) {
 		this(output, 3, 3);
 	}
 
-	public Board(PrintStream output, int tot_rows, int tot_columns) {
+	public Board(PrintStream output, int totRows, int totColumns) {
 		this.output = output;
-		this.tot_rows = tot_rows;
-		this.tot_columns = tot_columns;
+		this.totRows = totRows;
+		this.totColumns = totColumns;
 		
 		build();
 	}
 
 	private void build() {
-		content = new String[tot_rows][tot_columns];
+		content = new String[totRows][totColumns];
 		
-		for (int i = 0; i < tot_rows; i++) {
-			for (int j = 0; j < tot_columns; j++) {
+		for (int i = 0; i < totRows; i++) {
+			for (int j = 0; j < totColumns; j++) {
 				content[i][j] = EMPTY_CELL;
 			}
 		}
@@ -71,15 +82,15 @@ public class Board {
 	private String buildBody() {
 		StringBuilder body = new StringBuilder();
 		
-		for (int i = 0; i < tot_rows; i++) {
+		for (int i = 0; i < totRows; i++) {
 			
 			// Line number
 			body.append(i + 1).append(EMPTY_CELL);
 			
-			for (int j = 0; j < tot_columns; j++) {
+			for (int j = 0; j < totColumns; j++) {
 				body.append(content[i][j]);
 				
-				if(j < tot_columns - 1) {
+				if(j < totColumns - 1) {
 					// Columns separator
 					body.append("|");
 				}
@@ -102,7 +113,11 @@ public class Board {
 		return header.toString();
 	}
 
-	public String[][] getContent() {
-		return content;
+	public String getPlayerAtField(int rowIndex, int columnIndex) {
+		return content[rowIndex][columnIndex];
+	}
+
+	public boolean isEmptyField(int rowIndex, int columnIndex) {
+		return content[rowIndex][columnIndex].equals(EMPTY_CELL);
 	}
 }

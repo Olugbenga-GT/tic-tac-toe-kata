@@ -51,17 +51,6 @@ public class Board {
 		content[rowIndex][columnIndex] = player;
 	}
 
-	public void takeField(String field) {
-		if (!field.toUpperCase().matches("[A-C][1-3]")) {
-			return;
-		}
-		
-		int rowIndex = getRowIndexFromFieldCoordinates(field);
-		int columnIndex = getColumnIndexFromFieldCoordinates(field);
-		
-		content[rowIndex][columnIndex] = "X";
-	}
-
 	private int getColumnIndexFromFieldCoordinates(String field) {
 		return columnsCoordinates.get(field.substring(0, 1));
 	}

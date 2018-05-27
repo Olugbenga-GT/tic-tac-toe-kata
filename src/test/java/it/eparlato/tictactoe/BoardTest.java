@@ -59,10 +59,10 @@ public class BoardTest {
 	public void a_command_without_a_letter_or_a_number_is_not_valid() throws Exception {
 		board = new Board(printStream, 1, 1);
 		
-		board.takeField("A");
-		board.takeField("1");
-		board.takeField("foo");
-		board.takeField("");
+		board.takeField("A", playerX());
+		board.takeField("1", playerX());
+		board.takeField("foo", playerX());
+		board.takeField("", playerX());
 		
 		String expected = 
 				"  A\n" +
@@ -72,14 +72,14 @@ public class BoardTest {
 		
 		assertEquals(expected, outputBaos.toString("UTF-8"));
 	}
-	
+
 	@Test
 	public void a_valid_command_takes_a_field() throws Exception {
 		board = new Board(printStream, 3, 3);
 		
-		board.takeField("A1");
-		board.takeField("B2");
-		board.takeField("C3");
+		board.takeField("A1", playerX());
+		board.takeField("B2", playerX());
+		board.takeField("C3", playerX());
 		
 		String expected = 
 				"  A B C\n" +
@@ -96,16 +96,20 @@ public class BoardTest {
 	public void a_board_knows_when_all_fields_have_been_taken() throws Exception {
 		board = new Board(printStream, 3, 3);
 		
-		board.takeField("A1");
-		board.takeField("A2");
-		board.takeField("A3");
-		board.takeField("B1");
-		board.takeField("B2");
-		board.takeField("B3");
-		board.takeField("C1");
-		board.takeField("C2");
-		board.takeField("C3");
+		board.takeField("A1", playerX());
+		board.takeField("A2", playerX());
+		board.takeField("A3", playerX());
+		board.takeField("B1", playerX());
+		board.takeField("B2", playerX());
+		board.takeField("B3", playerX());
+		board.takeField("C1", playerX());
+		board.takeField("C2", playerX());
+		board.takeField("C3", playerX());
 		
 		assertTrue(board.haveAllFieldsBeenTaken());
+	}
+	
+	private String playerX() {
+		return "X";
 	}
 }

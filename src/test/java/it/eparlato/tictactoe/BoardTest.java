@@ -92,23 +92,6 @@ public class BoardTest {
 		assertEquals(expected, outputBaos.toString("UTF-8"));
 	}
 	
-	@Test
-	public void a_board_knows_when_all_fields_have_been_taken() throws Exception {
-		board = new Board(printStream, 3, 3);
-		
-		board.takeField("A1", playerX());
-		board.takeField("A2", playerX());
-		board.takeField("A3", playerX());
-		board.takeField("B1", playerX());
-		board.takeField("B2", playerX());
-		board.takeField("B3", playerX());
-		board.takeField("C1", playerX());
-		board.takeField("C2", playerX());
-		board.takeField("C3", playerX());
-		
-		assertTrue(board.haveAllFieldsBeenTaken());
-	}
-	
 	private String playerX() {
 		return "X";
 	}

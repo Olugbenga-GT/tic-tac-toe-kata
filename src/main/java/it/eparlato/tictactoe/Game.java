@@ -38,27 +38,10 @@ public class Game {
 	}
 	
 	public boolean isOver() {
-		if (board.haveAllFieldsBeenTaken()) {
-			return true;
-		}
 		
-		if (board.aRowHasBeenTakenByAPlayer()) {
-			return true;
-		}
-		
-		if (board.aColumnHasBeenTakenByAPlayer()) {
-			return true;
-		}
-		
-		if (board.upperLeftBottomRightDiagonalIsTakenByAPlayer()) {
-			return true;
-		}
-		
-		if (board.upperRightBottomLeftDiagonalIsTakenByAPlayer()) {
-			return true;
-		}
-		
-		return false;
+		GameStatusController gameStatusController = new GameStatusController();
+		return gameStatusController.isGameOver(board);
+
 	}
 
 	private void changePlayer() {

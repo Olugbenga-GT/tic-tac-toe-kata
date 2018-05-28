@@ -38,10 +38,14 @@ public class GameWith1x1BoardTest {
 
 	@Test
 	public void a_new_empty_board_is_shown_when_the_game_starts() throws Exception {
+		String command = "";
+		StringReader inputStream = new StringReader(command);
 		
 		String outputFlow = 
 				"  A\n" +
 				"1  \n";
+		
+		game.run(inputStream);
 		
 		assertTrue(gameOutput().contains(outputFlow));
 	}

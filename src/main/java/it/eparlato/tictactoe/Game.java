@@ -13,13 +13,13 @@ public class Game {
 	public Game(Board board, GameStatusController gameStatusController) {
 		this.board = board;
 		this.gameStatusController = gameStatusController;
-		
-		board.print();
 	}
 	
 	public void run(Reader inputStream) throws IOException {
 		String command;
 		BufferedReader commandReader = new BufferedReader(inputStream);
+		
+		board.print();
 		
 		while (!isOver()) {
 		

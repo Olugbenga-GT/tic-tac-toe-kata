@@ -13,7 +13,7 @@ public class AllFieldsHaveBeenTaken extends GameOverCondition {
 		for (int rowIndex = 0; rowIndex < totRows; rowIndex++) {
 			for (int columnIndex = 0; columnIndex < totColumns; columnIndex++) {
 
-				if (isEmptyCell(rowIndex, columnIndex)) {
+				if (isEmptyField(rowIndex, columnIndex)) {
 					return false;
 				}
 			}

@@ -11,16 +11,19 @@ import gameovercondition.UpperLeftBottomRightDiagonalIsTakenByAPlayer;
 import gameovercondition.UpperRightBottomLeftDiagonalIsTakenByAPlayer;
 
 public class GameStatusController {
-
-	public boolean isGameOver(Board board) {
-		
-		List<GameOverCondition> gameOverConditions = new ArrayList<GameOverCondition>();
-		
+	
+	List<GameOverCondition> gameOverConditions;
+	
+	GameStatusController (Board board) {
+		gameOverConditions = new ArrayList<GameOverCondition>();
 		gameOverConditions.add(new AllFieldsHaveBeenTaken(board));
 		gameOverConditions.add(new HasARowBeenTakenByPlayer(board));
 		gameOverConditions.add(new HasAColumnBeenTakenByAPlayer(board));
 		gameOverConditions.add(new UpperLeftBottomRightDiagonalIsTakenByAPlayer(board));
 		gameOverConditions.add(new UpperRightBottomLeftDiagonalIsTakenByAPlayer(board));
+	}
+
+	public boolean isGameOver() {
 		
 		for (GameOverCondition condition : gameOverConditions) {
 			if (condition.isTrue()) {

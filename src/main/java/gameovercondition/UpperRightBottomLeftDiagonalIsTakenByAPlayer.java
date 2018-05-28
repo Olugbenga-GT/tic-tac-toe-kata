@@ -10,7 +10,7 @@ public class UpperRightBottomLeftDiagonalIsTakenByAPlayer extends GameOverCondit
 
 	@Override
 	public boolean isTrue() {
-		if (isEmptyCell(0, totColumns - 1)) {
+		if (isEmptyField(0, totColumns - 1)) {
 			return false;
 		}
 

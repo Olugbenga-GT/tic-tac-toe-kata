@@ -8,7 +8,7 @@ public class Game {
 
 	private Board board;
 	private String player = "X";
-
+	
 	public Game(Board board) {
 		this.board = board;
 		
@@ -38,10 +38,8 @@ public class Game {
 	}
 	
 	public boolean isOver() {
-		
-		GameStatusController gameStatusController = new GameStatusController();
-		return gameStatusController.isGameOver(board);
-
+		GameStatusController gameStatusController = new GameStatusController(board);
+		return gameStatusController.isGameOver();
 	}
 
 	private void changePlayer() {

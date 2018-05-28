@@ -15,7 +15,7 @@ public abstract class GameOverCondition {
 		this.totColumns = board.getTotColumns();
 	}
 	
-	protected boolean isEmptyCell(int rowIndex, int columnIndex) {
+	protected boolean isEmptyField(int rowIndex, int columnIndex) {
 		return board.isEmptyField(rowIndex, columnIndex);
 	}
 	

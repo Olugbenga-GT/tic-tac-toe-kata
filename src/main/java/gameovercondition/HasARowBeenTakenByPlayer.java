@@ -21,7 +21,7 @@ public class HasARowBeenTakenByPlayer extends GameOverCondition {
 	
 	private boolean allFieldsAreTakenByAPlayerOnRow(int rowIndex) {
 
-		if (isEmptyCell(rowIndex, 0)) {
+		if (isEmptyField(rowIndex, 0)) {
 			return false;
 		}
 

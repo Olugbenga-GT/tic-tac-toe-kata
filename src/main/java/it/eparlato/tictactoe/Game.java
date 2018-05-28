@@ -8,9 +8,11 @@ public class Game {
 
 	private Board board;
 	private String player = "X";
+	private GameStatusController gameStatusController;
 	
-	public Game(Board board) {
+	public Game(Board board, GameStatusController gameStatusController) {
 		this.board = board;
+		this.gameStatusController = gameStatusController;
 		
 		board.print();
 	}
@@ -38,7 +40,6 @@ public class Game {
 	}
 	
 	public boolean isOver() {
-		GameStatusController gameStatusController = new GameStatusController(board);
 		return gameStatusController.isGameOver();
 	}
 

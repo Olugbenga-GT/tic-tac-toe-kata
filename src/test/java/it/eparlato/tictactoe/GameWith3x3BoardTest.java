@@ -19,6 +19,7 @@ public class GameWith3x3BoardTest {
 	private Board board;
 	private String commands;
 	private StringReader inputStream;
+	private GameStatusController gameStatuscontroller;
 	
 	@Before
 	public void init() {
@@ -26,8 +27,9 @@ public class GameWith3x3BoardTest {
 		printStream = new PrintStream(outputBaos);
 		
 		board = new Board(printStream);
+		gameStatuscontroller = new GameStatusController(board);
 		
-		game = new Game(board);
+		game = new Game(board, gameStatuscontroller);
 	}
 	
 	@After

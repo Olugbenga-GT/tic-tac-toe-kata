@@ -17,15 +17,17 @@ public class GameWith1x1BoardTest {
 	private ByteArrayOutputStream outputBaos;
 	private PrintStream printStream;
 	private Board board;
-
+	private GameStatusController gameStatusController;
+	
 	@Before
 	public void init() {
 		outputBaos = new ByteArrayOutputStream();
 		printStream = new PrintStream(outputBaos);
 		
 		board = new Board(printStream, 1, 1);
+		gameStatusController = new GameStatusController(board);
 		
-		game = new Game(board);
+		game = new Game(board, gameStatusController);
 	}
 	
 	@After

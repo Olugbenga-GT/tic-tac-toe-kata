@@ -1,4 +1,4 @@
-package gameovercondition;
+package it.eparlato.tictactoe.gameovercondition;
 
 import it.eparlato.tictactoe.Board;
 

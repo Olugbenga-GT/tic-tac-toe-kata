@@ -3,12 +3,12 @@ package it.eparlato.tictactoe;
 import java.util.ArrayList;
 import java.util.List;
 
-import gameovercondition.AllFieldsHaveBeenTaken;
-import gameovercondition.GameOverCondition;
-import gameovercondition.HasAColumnBeenTakenByAPlayer;
-import gameovercondition.HasARowBeenTakenByPlayer;
-import gameovercondition.UpperLeftBottomRightDiagonalIsTakenByAPlayer;
-import gameovercondition.UpperRightBottomLeftDiagonalIsTakenByAPlayer;
+import it.eparlato.tictactoe.gameovercondition.AllFieldsHaveBeenTaken;
+import it.eparlato.tictactoe.gameovercondition.GameOverCondition;
+import it.eparlato.tictactoe.gameovercondition.HasAColumnBeenTakenByAPlayer;
+import it.eparlato.tictactoe.gameovercondition.HasARowBeenTakenByPlayer;
+import it.eparlato.tictactoe.gameovercondition.UpperLeftBottomRightDiagonalIsTakenByAPlayer;
+import it.eparlato.tictactoe.gameovercondition.UpperRightBottomLeftDiagonalIsTakenByAPlayer;
 
 public class GameStatusController {
 	

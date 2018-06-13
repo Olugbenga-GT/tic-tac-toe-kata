@@ -6,7 +6,7 @@ The classic Tic Tac Toe game, implemented in Test Driven Development as a Java c
 
 I used the [Inside-out](https://8thlight.com/blog/georgina-mcfadyen/2016/06/27/inside-out-tdd-vs-outside-in.html ) approach.
 
-**NOTE**: this i still a work in progress version, many stories need to be implemented. 
+**NOTE**: this is still a work in progress version, many stories need to be implemented. 
 
 ## Rules
 

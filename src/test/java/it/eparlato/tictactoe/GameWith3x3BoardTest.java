@@ -1,6 +1,6 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class GameWith3x3BoardTest {
@@ -41,7 +42,7 @@ public class GameWith3x3BoardTest {
 	@Test
 	public void when_player_X_has_moved_it_is_player_O_turn() throws Exception {
 		commands = "A1\nB1\n";
-		inputStream = new StringReader(commands );
+		inputStream = new StringReader(commands);
 		
 		game.run(inputStream);
 		
@@ -51,6 +52,22 @@ public class GameWith3x3BoardTest {
 				"2  | | \n" +
 				"3  | | \n"
 						;
+		
+		assertTrue(gameOutput().contains(expected));
+	}
+	
+	@Test
+	public void if_a_cell_is_occupied_skip_the_move() throws Exception {
+		commands = "A1\nA1\nB1\n";
+		inputStream = new StringReader(commands);
+			
+		String expected = 
+				"  A B C\n" +
+				"1 X|O| \n" +
+				"2  | | \n" +
+				"3  | | \n"
+						;
+		game.run(inputStream);
 		
 		assertTrue(gameOutput().contains(expected));
 	}

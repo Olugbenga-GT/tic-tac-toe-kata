@@ -29,9 +29,11 @@ public class Game {
 				break;
 			}
 			
-			board.takeField(command, player); 
+			boolean cellTaken = board.takeField(command, player); 
 			
-			changePlayer();
+			if (cellTaken) {
+				changePlayer();
+			}
 			
 			board.print();
 		}

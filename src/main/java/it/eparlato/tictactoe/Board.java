@@ -11,7 +11,6 @@ public class Board {
 	private PrintStream output;
 	private int totRows;
 	private int totColumns;
-
 	
 	public int getTotRows() {
 		return totRows;
@@ -51,15 +50,21 @@ public class Board {
 		columnsCoordinates.put("C", 2);
 	}
 	
-	public void takeField(String field, String player) {
+	public boolean takeField(String field, String player) {
 		if (!field.toUpperCase().matches("[A-C][1-3]")) {
-			return;
+			return false;
 		}
 		
 		int rowIndex = getRowIndexFromFieldCoordinates(field);
 		int columnIndex = getColumnIndexFromFieldCoordinates(field);
 		
+		if (!isEmptyField(rowIndex, columnIndex)) {
+			return false;
+		}
+		
 		content[rowIndex][columnIndex] = player;
+		
+		return true;
 	}
 
 	private int getColumnIndexFromFieldCoordinates(String field) {

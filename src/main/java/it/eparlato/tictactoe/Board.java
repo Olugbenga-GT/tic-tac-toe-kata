@@ -11,17 +11,8 @@ public class Board {
 	private PrintStream output;
 	private int totRows;
 	private int totColumns;
-	
-	public int getTotRows() {
-		return totRows;
-	}
-	
-	public int getTotColumns() {
-		return totColumns;
-	}
-
-
-	Map<String, Integer> columnsCoordinates;
+	private Map<String, Integer> columnsCoordinates;
+	private String currentPlayer = "X";
 
 	public Board(PrintStream output) {
 		this(output, 3, 3);
@@ -51,9 +42,8 @@ public class Board {
 	}
 	
 	public boolean takeField(String field, String player) {
-		if (!field.toUpperCase().matches("[A-C][1-3]")) {
-			return false;
-		}
+
+		// TODO: field should become an Object
 		
 		int rowIndex = getRowIndexFromFieldCoordinates(field);
 		int columnIndex = getColumnIndexFromFieldCoordinates(field);
@@ -67,11 +57,11 @@ public class Board {
 		return true;
 	}
 
-	private int getColumnIndexFromFieldCoordinates(String field) {
+	public int getColumnIndexFromFieldCoordinates(String field) {
 		return columnsCoordinates.get(field.substring(0, 1));
 	}
 
-	private Integer getRowIndexFromFieldCoordinates(String field) {
+	public Integer getRowIndexFromFieldCoordinates(String field) {
 		return Integer.parseInt(field.substring(1)) - 1;
 	}
 
@@ -124,5 +114,26 @@ public class Board {
 
 	public boolean isEmptyField(int rowIndex, int columnIndex) {
 		return content[rowIndex][columnIndex].equals(EMPTY_CELL);
+	}
+
+	public String currentPlayer() {
+		return currentPlayer;
+	}
+	
+	public int getTotRows() {
+		return totRows;
+	}
+	
+	public int getTotColumns() {
+		return totColumns;
+	}
+
+	public void switchPlayer() {
+		if ("X".equals(currentPlayer)) {
+			currentPlayer = "O";
+		} else {
+			currentPlayer = "X";
+		}
+		
 	}
 }

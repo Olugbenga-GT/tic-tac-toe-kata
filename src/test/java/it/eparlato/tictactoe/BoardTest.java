@@ -56,24 +56,6 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void a_command_without_a_letter_or_a_number_is_not_valid() throws Exception {
-		board = new Board(printStream, 1, 1);
-		
-		board.takeField("A", playerX());
-		board.takeField("1", playerX());
-		board.takeField("foo", playerX());
-		board.takeField("", playerX());
-		
-		String expected = 
-				"  A\n" +
-				"1  \n";
-		
-		board.print();
-		
-		assertEquals(expected, outputBaos.toString("UTF-8"));
-	}
-
-	@Test
 	public void a_valid_command_takes_a_field() throws Exception {
 		board = new Board(printStream, 3, 3);
 		

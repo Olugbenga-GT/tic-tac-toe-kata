@@ -1,14 +1,16 @@
 package it.eparlato.tictactoe.command;
 
 import it.eparlato.tictactoe.Board;
+import it.eparlato.tictactoe.Field;
 
 public class TakeField implements Command {
 
-	private String field;
+	private String fieldCoordinates;
 	private Board board;
+	private Field field;
 
-	public TakeField(String field, Board board) {
-		this.field = field;
+	public TakeField(String fieldCoordinates, Board board) {
+		this.fieldCoordinates = fieldCoordinates;
 		this.board = board;
 	}
 
@@ -16,10 +18,9 @@ public class TakeField implements Command {
 	public void execute() {
 		String player = board.currentPlayer();
 		
-		int rowIndex = board.getRowIndexFromFieldCoordinates(field);
-		int columnIndex = board.getColumnIndexFromFieldCoordinates(field);
+		field = new Field(fieldCoordinates);
 		
-		if (!board.isEmptyField(rowIndex, columnIndex)) {
+		if (!board.isEmptyField(field)) {
 			return;
 		}
 		

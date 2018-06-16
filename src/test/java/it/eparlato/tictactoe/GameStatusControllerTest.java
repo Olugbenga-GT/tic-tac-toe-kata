@@ -15,15 +15,15 @@ public class GameStatusControllerTest {
 		GameStatusController gsc = new GameStatusController(board);
 		
 		
-		board.takeField("A1", playerX());
-		board.takeField("A2", playerX());
-		board.takeField("A3", playerX());
-		board.takeField("B1", playerX());
-		board.takeField("B2", playerX());
-		board.takeField("B3", playerX());
-		board.takeField("C1", playerX());
-		board.takeField("C2", playerX());
-		board.takeField("C3", playerX());
+		board.takeField(new Field("A1"), playerX());
+		board.takeField(new Field("A2"), playerX());
+		board.takeField(new Field("A3"), playerX());
+		board.takeField(new Field("B1"), playerX());
+		board.takeField(new Field("B2"), playerX());
+		board.takeField(new Field("B3"), playerX());
+		board.takeField(new Field("C1"), playerX());
+		board.takeField(new Field("C2"), playerX());
+		board.takeField(new Field("C3"), playerX());
 		
 		assertTrue(gsc.isGameOver());
 	}

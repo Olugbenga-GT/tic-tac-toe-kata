@@ -41,30 +41,10 @@ public class Board {
 		columnsCoordinates.put("C", 2);
 	}
 	
-	public boolean takeField(String field, String player) {
-
-		// TODO: field should become an Object
-		
-		int rowIndex = getRowIndexFromFieldCoordinates(field);
-		int columnIndex = getColumnIndexFromFieldCoordinates(field);
-		
-		if (!isEmptyField(rowIndex, columnIndex)) {
-			return false;
-		}
-		
-		content[rowIndex][columnIndex] = player;
-		
-		return true;
+	public void takeField(Field field, String player) {
+		content[field.getRowIndex()][field.getColumnIndex()] = player;
 	}
-
-	public int getColumnIndexFromFieldCoordinates(String field) {
-		return columnsCoordinates.get(field.substring(0, 1));
-	}
-
-	public Integer getRowIndexFromFieldCoordinates(String field) {
-		return Integer.parseInt(field.substring(1)) - 1;
-	}
-
+	
 	public void print() {
 		
 		String header = buildHeader();
@@ -111,9 +91,9 @@ public class Board {
 	public String getPlayerAtField(int rowIndex, int columnIndex) {
 		return content[rowIndex][columnIndex];
 	}
-
-	public boolean isEmptyField(int rowIndex, int columnIndex) {
-		return content[rowIndex][columnIndex].equals(EMPTY_CELL);
+	
+	public boolean isEmptyField(Field field) {
+		return content[field.getRowIndex()][field.getColumnIndex()].equals(EMPTY_CELL);
 	}
 
 	public String currentPlayer() {
@@ -136,4 +116,5 @@ public class Board {
 		}
 		
 	}
+
 }

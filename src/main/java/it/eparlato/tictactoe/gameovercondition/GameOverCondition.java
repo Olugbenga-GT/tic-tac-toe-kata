@@ -1,6 +1,7 @@
 package it.eparlato.tictactoe.gameovercondition;
 
 import it.eparlato.tictactoe.Board;
+import it.eparlato.tictactoe.Field;
 
 public abstract class GameOverCondition {
 	
@@ -16,7 +17,9 @@ public abstract class GameOverCondition {
 	}
 	
 	protected boolean isEmptyField(int rowIndex, int columnIndex) {
-		return board.isEmptyField(rowIndex, columnIndex);
+		Field field = new Field(rowIndex, columnIndex);
+		
+		return board.isEmptyField(field);
 	}
 	
 	protected String getPlayerAtField(int rowIndex, int columnIndex) {

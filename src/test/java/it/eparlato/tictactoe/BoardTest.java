@@ -59,9 +59,9 @@ public class BoardTest {
 	public void a_valid_command_takes_a_field() throws Exception {
 		board = new Board(printStream, 3, 3);
 		
-		board.takeField("A1", playerX());
-		board.takeField("B2", playerX());
-		board.takeField("C3", playerX());
+		board.takeField(new Field("A1"), playerX());
+		board.takeField(new Field("B2"), playerX());
+		board.takeField(new Field("C3"), playerX());
 		
 		String expected = 
 				"  A B C\n" +

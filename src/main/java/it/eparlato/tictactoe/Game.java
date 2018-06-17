@@ -6,7 +6,6 @@ import java.io.Reader;
 
 import it.eparlato.tictactoe.command.Command;
 import it.eparlato.tictactoe.command.CommandFactory;
-import it.eparlato.tictactoe.command.InvalidCommand;
 
 public class Game {
 
@@ -24,29 +23,22 @@ public class Game {
 		
 		board.print();
 		
-		CommandFactory commandFactory = new CommandFactory(board);
+		CommandFactory commandFactory = new CommandFactory(board, gameStateController);
 		Command command;
 		
-		while (!isOver()) {
+		while (gameStateController.isGameRunning()) {
 		
 			input = bufferedReader.readLine();
 			
 			command = commandFactory.next(input);
 			
-			if (command instanceof InvalidCommand) {
-				break;
-			}
-			
 			command.execute();
+			
+			gameStateController.checkForGameOver();
 			
 			board.print();
 		}
 		
 		bufferedReader.close();
 	}
-	
-	public boolean isOver() {
-		return gameStateController.isGameOver();
-	}
-
 }

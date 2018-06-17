@@ -1,22 +1,21 @@
 package it.eparlato.tictactoe.gameovercondition;
 
 import it.eparlato.tictactoe.Board;
+import it.eparlato.tictactoe.GameStateController;
 
 public class HasAColumnBeenTakenByAPlayer extends GameOverCondition {
 
-	public HasAColumnBeenTakenByAPlayer(Board board) {
-		super(board);
+	public HasAColumnBeenTakenByAPlayer(Board board, GameStateController gameStateController) {
+		super(board, gameStateController);
 	}
 
 	@Override
-	public boolean isTrue() {
+	public void check() {
 		for (int columnIndex = 0; columnIndex < totColumns; columnIndex++) {
 			if (allFieldsAreTakenByAPlayerOnColumn(columnIndex)) {
-				return true;
+				gameStateController.gameOverAColumnHasBeenTaken();
 			}
 		}
-
-		return false;
 	}
 	
 	private boolean allFieldsAreTakenByAPlayerOnColumn(int columnIndex) {

@@ -38,7 +38,7 @@ public class GameWith1x1BoardTest {
 
 	@Test
 	public void a_new_empty_board_is_shown_when_the_game_starts() throws Exception {
-		String command = "";
+		String command = "Q\n";
 		StringReader inputStream = new StringReader(command);
 		
 		String outputFlow = 
@@ -52,7 +52,7 @@ public class GameWith1x1BoardTest {
 
 	@Test
 	public void when_player_moves_a_cell_is_taken() throws Exception {
-		String command = "A1\n";
+		String command = "A1\nQ\n";
 		StringReader inputStream = new StringReader(command);
 		
 		game.run(inputStream);

@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.eparlato.tictactoe.Board;
+import it.eparlato.tictactoe.GameStateController;
 
 public class CommandFactoryTest {
 	
@@ -26,7 +27,7 @@ public class CommandFactoryTest {
 		outputBaos = new ByteArrayOutputStream();
 		printStream = new PrintStream(outputBaos);
 		board = new Board(printStream);
-		commandfactory = new CommandFactory(board);
+		commandfactory = new CommandFactory(board, new GameStateController(board));
 	}
 	
 	@After

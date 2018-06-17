@@ -12,7 +12,7 @@ public class GameStatusControllerTest {
 	@Test
 	public void all_fields_have_been_taken() throws Exception {
 		Board board = new Board(new PrintStream(new ByteArrayOutputStream()), 3, 3);
-		GameStatusController gsc = new GameStatusController(board);
+		GameStateController gsc = new GameStateController(board);
 		
 		
 		board.takeField(new Field("A1"), playerX());

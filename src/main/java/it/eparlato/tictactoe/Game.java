@@ -11,11 +11,11 @@ import it.eparlato.tictactoe.command.InvalidCommand;
 public class Game {
 
 	private Board board;
-	private GameStatusController gameStatusController;
+	private GameStateController gameStateController;
 	
-	public Game(Board board, GameStatusController gameStatusController) {
+	public Game(Board board, GameStateController gameStateController) {
 		this.board = board;
-		this.gameStatusController = gameStatusController;
+		this.gameStateController = gameStateController;
 	}
 	
 	public void run(Reader inputStream) throws IOException {
@@ -46,7 +46,7 @@ public class Game {
 	}
 	
 	public boolean isOver() {
-		return gameStatusController.isGameOver();
+		return gameStateController.isGameOver();
 	}
 
 }

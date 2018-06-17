@@ -1,15 +1,10 @@
 package it.eparlato.tictactoe.command;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-
 import it.eparlato.tictactoe.Board;
 
 public class CommandFactory {
 	
 	private Board board;
-	private Command command;
 	
 	public CommandFactory(Board board) {
 		this.board = board;

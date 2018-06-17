@@ -10,11 +10,11 @@ import it.eparlato.tictactoe.gameovercondition.HasARowBeenTakenByPlayer;
 import it.eparlato.tictactoe.gameovercondition.UpperLeftBottomRightDiagonalIsTakenByAPlayer;
 import it.eparlato.tictactoe.gameovercondition.UpperRightBottomLeftDiagonalIsTakenByAPlayer;
 
-public class GameStatusController {
+public class GameStateController {
 	
 	List<GameOverCondition> gameOverConditions;
 	
-	GameStatusController (Board board) {
+	GameStateController (Board board) {
 		gameOverConditions = new ArrayList<GameOverCondition>();
 		gameOverConditions.add(new AllFieldsHaveBeenTaken(board));
 		gameOverConditions.add(new HasARowBeenTakenByPlayer(board));

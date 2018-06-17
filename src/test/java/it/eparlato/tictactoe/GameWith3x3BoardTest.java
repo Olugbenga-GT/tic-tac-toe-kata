@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class GameWith3x3BoardTest {
@@ -20,7 +19,7 @@ public class GameWith3x3BoardTest {
 	private Board board;
 	private String commands;
 	private StringReader inputStream;
-	private GameStatusController gameStatuscontroller;
+	private GameStateController gameStatuscontroller;
 	
 	@Before
 	public void init() {
@@ -28,7 +27,7 @@ public class GameWith3x3BoardTest {
 		printStream = new PrintStream(outputBaos);
 		
 		board = new Board(printStream);
-		gameStatuscontroller = new GameStatusController(board);
+		gameStatuscontroller = new GameStateController(board);
 		
 		game = new Game(board, gameStatuscontroller);
 	}

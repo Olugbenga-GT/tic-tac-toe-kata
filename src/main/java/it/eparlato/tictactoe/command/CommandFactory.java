@@ -14,8 +14,6 @@ public class CommandFactory {
 	}
 
 	public Command next(String input) {
-		
-			
 		if (input == null) {
 			return new InvalidCommand();
 		}

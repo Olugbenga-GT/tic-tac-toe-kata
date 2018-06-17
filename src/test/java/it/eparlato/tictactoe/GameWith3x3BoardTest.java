@@ -1,6 +1,6 @@
 package it.eparlato.tictactoe;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -49,6 +49,23 @@ public class GameWith3x3BoardTest {
 				"  A B C\n" +
 				"1 X|O| \n" +
 				"2  | | \n" +
+				"3  | | \n"
+						;
+		
+		assertTrue(gameOutput().contains(expected));
+	}
+	
+	@Test
+	public void commands_lower_case_letters_are_valid() throws Exception {
+		commands = "a2\nQ\n";
+		inputStream = new StringReader(commands);
+		
+		game.run(inputStream);
+		
+		String expected = 
+				"  A B C\n" +
+				"1  | | \n" +
+				"2 X| | \n" +
 				"3  | | \n"
 						;
 		

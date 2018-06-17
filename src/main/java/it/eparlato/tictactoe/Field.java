@@ -17,13 +17,11 @@ public class Field {
 	private int getColumnIndexFromFieldCoordinates(String field) {
 		String column = field.substring(0, 1);
 		
-		// TODO: should I use here equalsIgnoreCase to deal with lower-case letters? Write a test.
-		
-		if ("A".equals(column)) {
+		if ("A".equalsIgnoreCase(column)) {
 			return 0;
 		}
 		
-		if ("B".equals(column)) {
+		if ("B".equalsIgnoreCase(column)) {
 			return 1;
 		}
 		

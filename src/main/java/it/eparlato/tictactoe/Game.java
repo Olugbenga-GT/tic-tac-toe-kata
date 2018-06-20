@@ -11,10 +11,12 @@ public class Game {
 
 	private Board board;
 	private GameStateController gameStateController;
+	private Prompt prompt;
 	
-	public Game(Board board, GameStateController gameStateController) {
+	public Game(Board board, GameStateController gameStateController, Prompt prompt) {
 		this.board = board;
 		this.gameStateController = gameStateController;
+		this.prompt = prompt;
 	}
 	
 	public void run(Reader inputStream) throws IOException {
@@ -38,6 +40,8 @@ public class Game {
 			
 			board.print();
 		}
+		
+		prompt.printExitMessage();
 		
 		bufferedReader.close();
 	}

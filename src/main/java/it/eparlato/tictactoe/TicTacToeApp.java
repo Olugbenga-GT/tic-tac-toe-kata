@@ -11,14 +11,16 @@ public class TicTacToeApp {
 	private Game game;
 	private BufferedReader reader;
 	private Board board;
+	private Prompt prompt;
 	private GameStateController gameStatusController;
 
 	public TicTacToeApp(Reader inputStream, PrintStream printStream) {
 		this.reader = new BufferedReader(inputStream);
 
 		this.board = new Board(printStream, 3, 3);
+		this.prompt = new Prompt(printStream);
 		this.gameStatusController = new GameStateController(board);
-		this.game = new Game(board, gameStatusController);
+		this.game = new Game(board, gameStatusController, prompt);
 	}
 
 	public void run() throws IOException {
@@ -27,9 +29,10 @@ public class TicTacToeApp {
 	
 	public static void main(String[] args) throws IOException {
 		Board board = new Board(System.out);
+		Prompt prompt = new Prompt(System.out);
 		GameStateController gameStatusController = new GameStateController(board);
 		
-		Game game = new Game(board, gameStatusController);
+		Game game = new Game(board, gameStatusController, prompt);
 		
 		game.run(new InputStreamReader(System.in));
 	}

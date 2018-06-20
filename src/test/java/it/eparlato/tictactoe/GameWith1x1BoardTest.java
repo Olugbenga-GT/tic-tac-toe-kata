@@ -17,6 +17,7 @@ public class GameWith1x1BoardTest {
 	private ByteArrayOutputStream outputBaos;
 	private PrintStream printStream;
 	private Board board;
+	private Prompt prompt;
 	private GameStateController gameStatusController;
 	
 	@Before
@@ -25,9 +26,10 @@ public class GameWith1x1BoardTest {
 		printStream = new PrintStream(outputBaos);
 		
 		board = new Board(printStream, 1, 1);
+		prompt = new Prompt(printStream);
 		gameStatusController = new GameStateController(board);
 		
-		game = new Game(board, gameStatusController);
+		game = new Game(board, gameStatusController, prompt);
 	}
 	
 	@After

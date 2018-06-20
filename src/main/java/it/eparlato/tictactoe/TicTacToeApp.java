@@ -28,13 +28,7 @@ public class TicTacToeApp {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		Board board = new Board(System.out);
-		Prompt prompt = new Prompt(System.out);
-		GameStateController gameStatusController = new GameStateController(board);
-		
-		Game game = new Game(board, gameStatusController, prompt);
-		
-		game.run(new InputStreamReader(System.in));
+		new TicTacToeApp(new InputStreamReader(System.in), System.out).run();
 	}
 
 }

@@ -6,6 +6,10 @@
 
 * build a prompt object to show messages: print when the game begins, when the game is over, who is the current player, when the command is invalid...
 
+  * a prompt should be used to get input as well
+  * should the prompt be responsible to print the Board?
+  * create a different object to print the board content on console?
+
 * deal with not valid commands: start ignoring them, then print a message on a prompt
 
 * write good application end-to-end tests

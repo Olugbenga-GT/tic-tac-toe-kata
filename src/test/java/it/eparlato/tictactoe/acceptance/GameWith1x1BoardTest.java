@@ -1,4 +1,4 @@
-package it.eparlato.tictactoe;
+package it.eparlato.tictactoe.acceptance;
 
 import static org.junit.Assert.assertTrue;
 
@@ -10,6 +10,11 @@ import java.io.UnsupportedEncodingException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import it.eparlato.tictactoe.Board;
+import it.eparlato.tictactoe.Game;
+import it.eparlato.tictactoe.GameStateController;
+import it.eparlato.tictactoe.Prompt;
 
 public class GameWith1x1BoardTest {
 	
